@@ -11,7 +11,7 @@ const HomeTopSix = async () => {
     orderBy: { id: "asc" },
   });
 
-  const topViewedPosts= await prisma.post.findMany({
+  const topViewedPosts = await prisma.post.findMany({
     include: { categories: true, author: true },
     orderBy: { views: "desc" },
   });
@@ -23,7 +23,7 @@ const HomeTopSix = async () => {
           <Link href={`/post/${post.id}`} key={post.id}>
             <div className="flex flex-col items-center">
               <div
-                className="h-[100px] hover:scale-105 transition duration-1000 ease-out bg-cover bg-top object-cover w-[100%] overflow-hidden"
+                className="h-[100px] hover:scale-[1.03] transition duration-1000 ease-out bg-cover bg-top object-cover w-[100%] overflow-hidden"
                 style={{ backgroundImage: `url(${post.image})` }}
               >
                 <div className="overlay w-[100%] transition duration-1000 ease-out h-[100%] hover:bg-black  hover:bg-opacity-30"></div>
@@ -39,12 +39,12 @@ const HomeTopSix = async () => {
 
       <div className="flex mt-10 flex-col lg:flex-row">
         <div className="w-[100%] lg:w-[70%] relative mr-2">
-          <button className="btn btn-success rounded-sm absolute -top-4 left-4 z-[999] ">
+          <button className="btn lg:text-xl btn-success rounded-sm absolute -top-4 left-4 z-[999] ">
             TOP STORIES
           </button>
 
           <div
-            className="h-[400px] m-2 hover:scale-95 transition duration-1000 ease-out bg-cover object-cover bg-top w-[100%] overflow-hidden relative"
+            className="h-[220px] lg:h-[400px] m-2 hover:scale-[1.01] transition duration-1000 ease-out bg-cover object-cover bg-top w-[100%] overflow-hidden relative"
             style={{ backgroundImage: `url('${topViewedPosts[0].image}')` }}
           >
             <Link
@@ -59,7 +59,7 @@ const HomeTopSix = async () => {
                   </p>
                 </div>
 
-                <h1 className="text-white text-2xl post-title">
+                <h1 className="text-white text-xl lg:text-2xl post-title">
                   {topViewedPosts[0].title}
                 </h1>
               </div>
@@ -69,7 +69,7 @@ const HomeTopSix = async () => {
         <div className="w-[100%] lg:w-[28%] overflow-hidden flex lg:block">
           <div className="w-[50%] lg:w-[100%]">
             <div
-              className="h-[195px] hover:scale-95 transition duration-1000 ease-out m-2 bg-top bg-cover object-cover w-[100%] overflow-hidden "
+              className="h-[120px] lg:h-[195px] hover:scale-[1.01] transition duration-1000 ease-out m-2 bg-top bg-cover object-cover w-[100%] overflow-hidden "
               style={{ backgroundImage: `url('${topViewedPosts[1].image}')` }}
             >
               <Link
@@ -78,9 +78,9 @@ const HomeTopSix = async () => {
               >
                 <div className="content">
                   <div className="flex items-center">
-                  <Views post={topViewedPosts[1]} />
+                    <Views post={topViewedPosts[1]} />
 
-                    <p className="text-sm font-semibold bg-slate-50 lg:px-4">
+                    <p className="text-sm font-semibold bg-slate-50 px-0 lg:px-4">
                       {topViewedPosts[1].categories.name}
                     </p>
                   </div>
@@ -94,7 +94,7 @@ const HomeTopSix = async () => {
           </div>
           <div className="w-[50%] lg:w-[100%]">
             <div
-              className="h-[195px] hover:scale-95 transition duration-1000 ease-out bg-top m-2 bg-cover object-cover w-[100%] overflow-hidden"
+              className="h-[120px] lg:h-[195px] hover:scale-[1.01] transition duration-1000 ease-out bg-top m-2 bg-cover object-cover w-[100%] overflow-hidden"
               style={{ backgroundImage: `url('${topViewedPosts[2].image}')` }}
             >
               <Link
@@ -103,7 +103,7 @@ const HomeTopSix = async () => {
               >
                 <div className="content">
                   <div className="flex items-center">
-                  <Views post={topViewedPosts[2]} />
+                    <Views post={topViewedPosts[2]} />
 
                     <p className="text-sm font-semibold bg-slate-50 lg:px-4">
                       {topViewedPosts[2].categories.name}

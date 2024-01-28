@@ -9,7 +9,7 @@ type Posts=Prisma.PostGetPayload<{
 const Views = ({post}:any) => {
   return (
     <div
-    className="bg-slate-50 text-[10px] mr-2 text-gray-500 font-semibold flex items-center px-4 "
+    className="bg-slate-50 text-[10px] mr-2 text-gray-500 font-semibold flex items-center px-1 lg:px-4 "
   >
     {" "}
     <p>
