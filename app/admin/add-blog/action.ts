@@ -3,10 +3,10 @@
 import cloudinary from "@/utils/cloudinary";
 import { prisma } from "@/lib/db/prisma";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { File } from "buffer";
+import { authOptions } from "@/lib/auth";
 
 export const formHandler = async (formaData: FormData) => {
   const title = formaData.get("title")?.toString();

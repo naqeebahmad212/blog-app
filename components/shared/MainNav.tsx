@@ -1,8 +1,8 @@
 "use server";
 
 import { getUser } from "@/app/admin/add-blog/action";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Navbar from "@/components/shared/Navbar";
+import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 
 const MainNav = async () => {

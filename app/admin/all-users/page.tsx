@@ -2,7 +2,6 @@
 import { prisma } from "@/lib/db/prisma"
 import { getServerSession } from "next-auth"
 import DataGridComp from "@/components/DataGridComp";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import UserDataGrid from "./UsersDataGrid";
 
 

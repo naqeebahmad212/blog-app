@@ -1,9 +1,9 @@
 "use server";
 import MainNav from "@/components/shared/MainNav";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
 import { getUser } from "./add-blog/action";
 import { redirect } from "next/navigation";
+import { authOptions } from "@/lib/auth";
 // import SessionProvider from './SessionProvider'
 
 export default async function RootLayout({

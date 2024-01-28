@@ -7,3 +7,26 @@ import { Adapter } from "next-auth/adapters";
 import GoogleProvider from "next-auth/providers/google";
 
 
+export const authOptions: NextAuthOptions = {
+    adapter: PrismaAdapter(prisma as PrismaClient ) as Adapter,
+    providers: [
+      GoogleProvider({
+        clientId: env.GOOGLE_CLIENT_ID,
+        clientSecret: env.GOOGLE_CLIENT_SECRET,
+      }),
+    ],
+    secret:'kjfhlskfwe9r9',
+    callbacks:{
+      session({session, user}) {
+        session.user.id=user.id
+        // session.user.role=user.role
+        return session
+      },
+    },
+    // events:{
+    //   async signIn({user}) {
+        
+    //     await mergAnonymusCart(user.id)
+    //   },
+    // }
+  };
