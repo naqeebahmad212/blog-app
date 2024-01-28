@@ -72,7 +72,7 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
   };
 
   return (
-    <AppBar position="static" className="bg-gray-800">
+    <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Image src={logo} alt="Logo" width={30} height={30} />

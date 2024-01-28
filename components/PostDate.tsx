@@ -37,7 +37,7 @@ const PostDate = ({ post, className }: PostDateProps) => {
       ) >= 1 &&
         Math.floor(
           (Date.now() - Number(new Date(post.createdAt))) / 1000 / 60 / 60
-        ) <= 24 && (
+        ) < 24 && (
           <p className={`w-full ${className}`}>
             {Math.floor(
               (Date.now() - Number(new Date(post.createdAt))) / 1000 / 60 / 60
