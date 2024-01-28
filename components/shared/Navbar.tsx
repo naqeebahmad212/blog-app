@@ -76,11 +76,10 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Image src={logo} alt="Logo" width={30} height={30} />
-          <Typography
+         <Link href={'/'}>
+         <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -93,6 +92,7 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
           >
             SEOMrush
           </Typography>
+         </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
