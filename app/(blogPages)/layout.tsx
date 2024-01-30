@@ -16,12 +16,11 @@ export default function BlogPagesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${NotoSerif.className} bg-white`}>
+   
+      <main>
           <MainNav />
           <main className="">{children}</main>
           <Footer />
-      </body>
-    </html>
-  );
+      </main>
+  )
 }
