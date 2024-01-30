@@ -75,7 +75,7 @@ const EditBlogClient = ({post} : any ) => {
       const categories = await getAllcategories();
       setCategoriesDatabase(categories);
     });
-  },);
+  },[]);
 
   const imagesHandler = (e: any) => {
     if (e.target.files.length > 0) {

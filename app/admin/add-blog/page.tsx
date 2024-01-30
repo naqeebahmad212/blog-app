@@ -10,7 +10,7 @@ export const metadata = {
 
 const AddBlogPage = async() => {
   return (
-    <div>
+    <div className=" m-auto">
       <AddBlogClient/>
     </div>
   )

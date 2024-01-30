@@ -1,11 +1,9 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import {
-  addNewCategory,
   formHandler,
   getAllcategories,
-  getUser,
 } from "./action";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -19,6 +17,7 @@ import { getServerSession } from "next-auth";
 import { prisma } from "@/lib/db/prisma";
 import { User } from "@prisma/client";
 import { Metadata } from "next";
+import { useFormStatus } from "react-dom";
 
 interface CategoriesProps {
   id: string;
@@ -39,8 +38,9 @@ interface UserProps {
 
 
 const AddBlogClient = () => {
-  const [pending, startTransition] = useTransition();
-  
+  const [isPending, startTransition] = useTransition();
+  const { pending } = useFormStatus();
+
 
   const modules = {
     toolbar: [
@@ -67,15 +67,17 @@ const AddBlogClient = () => {
   let initArrCate: CategoriesProps[] = [];
   // Array<{ id: number, name: string }>
   const [categoriesDatabase, setCategoriesDatabase] = useState(initArrCate);
+  const [cat , setCat]=useState('')
 
   useEffect(() => {
     startTransition(async () => {
       const categories = await getAllcategories();
       setCategoriesDatabase(categories);
     });
-  },);
+  },[]);
 
   const imagesHandler = (e: any) => {
+
     if (e.target.files.length > 0) {
       setFiles("");
       setImagePreview("");
@@ -148,14 +150,6 @@ const AddBlogClient = () => {
           ))}
         </select>
 
-        {/* The button to open modal */}
-        <label
-          htmlFor="my_modal_6"
-          className="items-center text-center select select-bordered w-full mb-4"
-        >
-          Add Category
-        </label>
-
         <ReactQuill
           className="h-[30vh] mb-20"
           value={body}
@@ -165,33 +159,6 @@ const AddBlogClient = () => {
         <input type="hidden" name="body" value={body} id="" />
         <PostSubmitBtn>Add Post</PostSubmitBtn>
       </form>
-
-      {/* Put this part before </body> tag */}
-      <input type="checkbox" id="my_modal_6" className="modal-toggle" />
-      <div className="modal" role="dialog">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Add New Category</h3>
-          <form action={addNewCategory}>
-            <input
-              type="text"
-              name="newCategory"
-              className="input input-bordered w-full"
-              id=""
-            />
-            <div className="modal-action">
-              <button type="submit">
-                <label htmlFor="my_modal_6" className="btn btn-primary btn ">
-                  Add
-                </label>
-              </button>
-              <label htmlFor="my_modal_6" className="btn">
-                Close
-              </label>
-            </div>
-          </form>
-          <div className="modal-action"></div>
-        </div>
-      </div>
     </div>
   );
 };

@@ -13,8 +13,6 @@ const NotoSerif = Noto_Serif({
   subsets: ["latin"],
 });
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   title: "SEOMrush",
   description:
@@ -30,9 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${NotoSerif.className} bg-white`}>
         <SessionProvider>
-          <MainNav />
-          <main className="p-5 bg-white w-[85vw] m-auto">{children}</main>
-          <Footer />
+          <main className="">{children}</main>
         </SessionProvider>
       </body>
       <GoogleAnalytics gaId={env.NEXT_PUBLIC_GOOGLE_ANALYTICS}/>

@@ -21,7 +21,7 @@ const AllPosts = async() => {
    
 
   return (
-    <div>
+    <div className=" m-auto">
         <DataGridComp userPosts={userPosts} />
     </div>
   )

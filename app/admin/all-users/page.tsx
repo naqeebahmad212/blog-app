@@ -18,7 +18,7 @@ const AllUser = async() => {
    
 
   return (
-    <div>
+    <div className="">
         <UserDataGrid users={users}/>
     </div>
   )

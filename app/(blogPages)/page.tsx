@@ -32,7 +32,7 @@ export default async function Home({
 
   revalidatePath("/");
   return (
-    <>
+    <main className="p-5 bg-white w-[85vw] m-auto">
       <HomeTopSix />
 
       <div className="flex flex-wrap flex-col lg:flex-row m-2">
@@ -71,6 +71,6 @@ export default async function Home({
 
         <PaginationBar currentPage={currentPage} totalPages={totalPages} />
       </div>
-    </>
+    </main>
   );
 }

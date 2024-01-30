@@ -24,7 +24,7 @@
   font-size: 30px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1050px) {
   #postBody h1 {
     font-size: 23px !important;
   }
@@ -32,6 +32,13 @@
   #postBody h2 {
     font-size: 20px !important;
     font-weight: 600;
+  }
+  .productListTable {
+    border-color: transparent !important;
+  }
+  .productListTable div{
+    border-color: transparent !important;
+    /* z-index: 0; */
   }
 }
 
@@ -53,3 +60,8 @@
 .css-1x7skt0 ,.css-hip9hq-MuiPaper-root-MuiAppBar-root{
   background-color: rgb(9, 31, 49) !important;
 }
+
+
+
+
+

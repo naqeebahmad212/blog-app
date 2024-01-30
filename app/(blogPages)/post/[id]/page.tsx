@@ -62,7 +62,9 @@ const PostdetailsPage = async ({ params: { id } }: PostdetailsPageProps) => {
   
 
   return (
-    <div className="flex flex-col gap-5 mt-10 lg:flex-row">
+  <main
+   className="p-5 bg-white w-[85vw] m-auto">
+      <div className="flex flex-col gap-5 mt-10 lg:flex-row">
       <div className="w-[100%] lg:w-[65%]">
         <div className=" flex items-start justify-between">
           <h1 className="text-xl mb-5 mr-5 font-bold lg:text-2xl">
@@ -208,6 +210,7 @@ const PostdetailsPage = async ({ params: { id } }: PostdetailsPageProps) => {
         </div>
       </div>
     </div>
+   </main>
   );
 
 };

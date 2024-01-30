@@ -19,10 +19,9 @@ import Image from "next/image";
 import { signIn, signOut } from "next-auth/react";
 import { Session } from "next-auth";
 import PostAddIcon from '@mui/icons-material/PostAdd';
-import PeopleIcon from '@mui/icons-material/People';
-import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
 const pages = [
   { label: "Seo", route: "/category/seo" },
@@ -198,24 +197,15 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
               {userInfo && userInfo.role === "admin" && (
                 <>
                   <MenuItem onClick={handleCloseUserMenu}>
-                    <PostAddIcon className="mr-3"/>
-                    <Link href={"/admin/add-blog"}>Add Post</Link>
+                    <DashboardIcon fontSize="small" className="mr-3"/>
+                    <Link href={"/admin/dashboard"}>Dashboard</Link>
                   </MenuItem>
 
-                  <MenuItem onClick={handleCloseUserMenu}>
-                    <DynamicFeedIcon className="mr-3"/>
-                    <Link href={"/admin/all-posts"}>All Posts</Link>
-                  </MenuItem>
-
-                  <MenuItem onClick={handleCloseUserMenu}>
-                    <PeopleIcon className="mr-3"/>
-                    <Link href={"/admin/all-users"}>All Users</Link>
-                  </MenuItem>
                 </>
               )}
               {session ? (
                 <MenuItem>
-                <LogoutIcon className="mr-3"/>
+                <LogoutIcon fontSize="small" className="mr-3"/>
                   <button
                     onClick={() => {
                       signOut({ callbackUrl: "/" });
@@ -227,7 +217,7 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
               ) : (
                 <div>
                   <MenuItem>
-                  <LoginIcon className="mr-3"/>
+                  <LoginIcon fontSize="small" className="mr-3"/>
                     <button
                       onClick={() => {
                         signIn();

@@ -98,12 +98,12 @@ const DataGridComp = ({ userPosts }: any) => {
 
   return (
     <div className="relative">
-      <div className="absolute top-[40%] left-[0%] h-[100vh] w-full">
+      {/* <div className="absolute top-[40%] left-[0%] bg-transparent h-[100vh] w-full">
         {pending && (
           <span className="loading loading-spinner loading-lg"></span>
         )}
-      </div>
-      <h1 className="text-center my-3">All Products</h1>
+      </div> */}
+      <h1 className="text-center my-3">All Blogs</h1>
       <DataGrid
         rows={rows}
         columns={columns}

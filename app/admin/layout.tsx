@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import { getUser } from "./add-blog/action";
 import { redirect } from "next/navigation";
 import { authOptions } from "@/lib/auth";
+import DashbaordSideBar from "@/components/DashbaordSideBar";
 // import SessionProvider from './SessionProvider'
 
 export default async function RootLayout({
@@ -23,8 +24,19 @@ export default async function RootLayout({
   }
 
   return (
-    <div>
-      <main className="p-5 bg-base-100 w-[85vw] m-auto">{children}</main>
-    </div>
+    <main>
+      {/* <MainNav /> */}
+      <div className="dashboardContainer flex">
+        <div className="sidebar lg:w-80 fixed md:static">
+          <DashbaordSideBar />
+        </div>
+        <div className="dashboard w-[75%] mx-auto">
+          <h1 className="text-2xl  text-center bg-primary text-white p-3 m-auto mt-5">
+            Admin Dshboard
+          </h1>
+          {children}
+        </div>
+      </div>
+    </main>
   );
 }

@@ -12,6 +12,7 @@ const PostSubmitBtn = ({ children, className, ...props }: PostBtnProps) => {
     //   const [pending, setPending] = useState(false);
   return (
     <button
+
       type="submit"
       {...props}
       // onClick={()=> setPending(true) }

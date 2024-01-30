@@ -20,7 +20,7 @@ const EditBlogPage = async({params:{id}}:EditBlogPageProps) => {
         include:{categories:true}
     })
   return (
-    <div>
+    <div className="p-5 bg-white w-[85vw] m-auto">
       <EditBlogClient post={post}  />
     </div>
   )

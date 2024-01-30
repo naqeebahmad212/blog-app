@@ -28,7 +28,7 @@ const SeoCategoryPage = async ({ params: { category } }: searchParamsProps) => {
   });
 
   return (
-    <>
+    <main className="p-5 bg-white w-[85vw] m-auto">
     <h1 className="text-2xl font-bold mb-8">{category.toUpperCase()} BLOGS</h1>
       {seoCategories && (
         <div className="w-[100%]  grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
@@ -36,7 +36,7 @@ const SeoCategoryPage = async ({ params: { category } }: searchParamsProps) => {
             category.Post.map((post) => (
               <Link href={"/post/" + post.id} key={post.id}>
                 <div
-                  className="h-[200px] hover:scale-105 transition duration-1000 ease-out bg-cover object-cover bg-top"
+                  className="h-[200px] hover:scale-[1.03] transition duration-1000 ease-out bg-cover object-cover bg-top"
                   style={{ backgroundImage: `url(${post.image})` }}
                 >
                   <div className="overlay flex relative p-6 w-[100%] transition duration-1000 ease-out h-[100%] hover:bg-black  hover:bg-opacity-30">
@@ -75,7 +75,7 @@ const SeoCategoryPage = async ({ params: { category } }: searchParamsProps) => {
           <h2 className="text-2xl font-bold">No Posts found in the Category!</h2>
         </div>
       )}
-    </>
+    </main>
   );
 };
 
