@@ -1,16 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState, useTransition } from "react";
-import {
-  addNewCategory,
- 
-  getAllcategories,
- 
-} from "@/app/admin/add-blog/action";
+import { getAllcategories } from "@/app/admin/add-blog/action";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Image from "next/image";
-
 
 import PostSubmitBtn from "@/app/admin/add-blog/PostSubmitBtn";
 import { updateHandler } from "./action";
@@ -30,19 +24,12 @@ interface UserProps {
   image: string | null;
 }
 
+export type PostProps = Prisma.PostGetPayload<{
+  include: { categories: true };
+}>;
 
-export type PostProps=Prisma.PostGetPayload<{
-    include:{categories:true}
-}>
-
- 
-
-
-
-
-const EditBlogClient = ({post} : any ) => {
+const EditBlogClient = ({ post }: any) => {
   const [pending, startTransition] = useTransition();
-  
 
   const modules = {
     toolbar: [
@@ -75,7 +62,7 @@ const EditBlogClient = ({post} : any ) => {
       const categories = await getAllcategories();
       setCategoriesDatabase(categories);
     });
-  },[]);
+  }, []);
 
   const imagesHandler = (e: any) => {
     if (e.target.files.length > 0) {
@@ -144,9 +131,9 @@ const EditBlogClient = ({post} : any ) => {
           id=""
           className="select select-bordered w-full mb-4"
         >
-            {post && post.categories.name && (
-                <option value={post.categories.name}>{post.categories.name}</option>
-            )}
+          {post && post.categories.name && (
+            <option value={post.categories.name}>{post.categories.name}</option>
+          )}
           <option value="dev">No Category</option>
           {categoriesDatabase.map((categoryName: any) => (
             <option value={categoryName.name} key={categoryName.name}>
@@ -154,14 +141,6 @@ const EditBlogClient = ({post} : any ) => {
             </option>
           ))}
         </select>
-
-        {/* The button to open modal */}
-        <label
-          htmlFor="my_modal_6"
-          className="items-center text-center select select-bordered w-full mb-4"
-        >
-          Add Category
-        </label>
 
         <ReactQuill
           className="h-[30vh] mb-20"
@@ -172,33 +151,6 @@ const EditBlogClient = ({post} : any ) => {
         <input type="hidden" name="body" value={body} id="" />
         <PostSubmitBtn>Update Post</PostSubmitBtn>
       </form>
-
-      {/* Put this part before </body> tag */}
-      <input type="checkbox" id="my_modal_6" className="modal-toggle" />
-      <div className="modal" role="dialog">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Add New Category</h3>
-          <form action={addNewCategory}>
-            <input
-              type="text"
-              name="newCategory"
-              className="input input-bordered w-full"
-              id=""
-            />
-            <div className="modal-action">
-              <button type="submit">
-                <label htmlFor="my_modal_6" className="btn btn-primary">
-                  Add
-                </label>
-              </button>
-              <label htmlFor="my_modal_6" className="btn">
-                Close
-              </label>
-            </div>
-          </form>
-          <div className="modal-action"></div>
-        </div>
-      </div>
     </div>
   );
 };
