@@ -17,7 +17,7 @@ export default async function RootLayout({
   if (userId) {
     const user = await getUser(userId);
     if (user?.role !== "admin") {
-      redirect("/api/auth/signin?callbackUrl=/admin/add-blog");
+      redirect("/auth/signin");
     }
   } else {
     redirect("/");

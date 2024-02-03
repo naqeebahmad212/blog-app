@@ -23,6 +23,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { useRouter } from "next/navigation";
 const pages = [
   { label: "Seo", route: "/category/seo" },
   { label: "Web Development", route: "/category/dev" },
@@ -46,6 +47,7 @@ interface NavProps {
 
 function ResponsiveAppBar({ session, userInfo }: NavProps) {
   
+  const router = useRouter()
   const [isPending, startTransition] = React.useTransition();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -219,13 +221,9 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
                 <div>
                   <MenuItem>
                   <LoginIcon fontSize="small" className="mr-3"/>
-                    <button
-                      onClick={() => {
-                        signIn();
-                      }}
-                    >
-                      Login
-                    </button>
+                    <Link href={'/auth/signin'}>
+                    Login
+                    </Link>
                   </MenuItem>
 
 

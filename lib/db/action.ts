@@ -7,6 +7,8 @@ import { boolean } from "zod";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
 import { Prisma } from "@prisma/client";
+import { sign } from "crypto";
+import { signIn } from "next-auth/react";
 
 interface DataProps {
   data: {
@@ -43,9 +45,6 @@ export const registerUser = async (formData: DataProps) => {
         password: hashedPassword,
       },
     });
-    redirect(
-      "/auth/signin?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2Fregister"
-    );
   } catch (err: any) {
     if (err instanceof Prisma.PrismaClientKnownRequestError) {
       // The .code property can be accessed in a type-safe manner
@@ -54,6 +53,7 @@ export const registerUser = async (formData: DataProps) => {
       }
     }
   }
+  redirect("/auth/signin");
 };
 
 export const deleteUserHandler = async (id: string) => {

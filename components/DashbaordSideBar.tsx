@@ -5,6 +5,9 @@ import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import PeopleIcon from '@mui/icons-material/People';
 import DescriptionIcon from '@mui/icons-material/Description';
 import CategoryIcon from '@mui/icons-material/Category';
+import { signOut } from "next-auth/react";
+import LogoutBtn from "./LogoutBtn";
+import LogoutIcon from '@mui/icons-material/Logout';
 const DashbaordSideBar = () => {
   return (
     <div className="bottom-0 sticky">
@@ -55,6 +58,11 @@ const DashbaordSideBar = () => {
             <div className="hover:bg-primary border-b border-gray-200 transition-all duration-500 ease-out p-3 hover:cursor-pointer flex items-center gap-2">
               <CategoryIcon fontSize="small"/>
               <Link href={"/admin/all-categories"}>Categories</Link>
+            </div>
+
+            <div className="hover:bg-primary border-b border-gray-200 transition-all duration-500 ease-out p-3 hover:cursor-pointer flex items-center gap-2">
+              <LogoutIcon fontSize="small"/>
+              <LogoutBtn>Logout</LogoutBtn>
             </div>
           </ul>
         </div>

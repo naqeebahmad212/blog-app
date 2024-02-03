@@ -6,8 +6,15 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import NoteAltIcon from "@mui/icons-material/NoteAlt";
 import { deleteProductHandler } from "@/app/admin/all-posts/action";
 import { deleteUserHandler, userRoleHandler } from "@/lib/db/action";
+import { User } from "@prisma/client";
+import { Session } from "next-auth";
 
-const UserDataGrid = ({ users }: any) => {
+interface UserProps{
+  users:User[]
+  session:Session | null
+}
+
+const UserDataGrid = ({ users , session }: UserProps) => {
   const [pending, startTransition] = useTransition();
   const [userId, setUserId] = useState("");
   const columns = [
@@ -55,6 +62,7 @@ const UserDataGrid = ({ users }: any) => {
         return (
           <>
             <button
+            disabled={ session?.user.email !== "soomrush212@gmail.com" }
               onClick={() => {
                 setUserId(params.row.id);
               }}
@@ -69,7 +77,7 @@ const UserDataGrid = ({ users }: any) => {
 
             <button
               className="ml-4 hover:text-warning"
-              disabled={pending}
+              disabled={pending || session?.user.email !== "soomrush212@gmail.com" } 
               onClick={() =>
                 startTransition(async () => {
                   deleteUserHandler(params.row.id);
@@ -104,7 +112,7 @@ const UserDataGrid = ({ users }: any) => {
       {pending && (
         <span className="loading loading-spinner loading-sm absolute left-[42%] top-[45%] "></span>
       )}
-      <h1 className="text-center my-3">All Products</h1>
+      <h1 className="text-center my-3">All Users</h1>
       <DataGrid
         rows={rows}
         columns={columns}

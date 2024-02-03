@@ -22,7 +22,7 @@ const DeleteBtn = ({ children, className, id , btnStatus, ...props }: DeleteBtnP
       {...props}
       // onClick={()=> setPending(true) }
       disabled={isPending || btnStatus}
-      className={`btn btn-primary  ${className}`}
+      className={`btn btn-primary px-2 py-0 min-h-[1rem] h-[2rem]  ${className}`}
     >
       {isPending && <span className="loading loading-spinner loading-xs" />}
       {children}

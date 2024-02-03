@@ -6,8 +6,6 @@ import React, { FormEventHandler, useState, useTransition } from "react";
 import GoogleIcon from "@mui/icons-material/Google";
 
 const RegisterForm = () => {
-  const { data: session } = useSession();
-  console.log(session);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassowrd] = useState("");
@@ -18,6 +16,7 @@ const RegisterForm = () => {
 
   const registerHandler: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
+    setErr('')
     if (password !== confPassowrd) {
       return setErr("Confirm password does not match");
     }
@@ -128,12 +127,12 @@ const RegisterForm = () => {
             </div>
             <div className="text-sm mt-3 font-medium text-gray-500 dark:text-gray-300">
               Already have an account?{" "}
-              <button
-                onClick={async () => await signIn()}
+              <Link 
+              href={'/auth/signin'}
                 className="text-blue-700 hover:underline dark:text-blue-500"
               >
                 Login
-              </button>
+              </Link>
             </div>
           </div>
         </div>

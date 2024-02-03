@@ -8,8 +8,6 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 
-
-
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma as PrismaClient) as Adapter,
   session: {
@@ -19,41 +17,48 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
+      id:"google"
     }),
 
     CredentialsProvider({
       type: "credentials",
-      credentials: {
-        // username: { label: "Username", type: "text", placeholder: "jsmith" },
-        // password: { label: "Password", type: "password" },
-      },
+      id: "credentials",
+      name: "Credentials",
+      credentials: {},
       async authorize(credentials) {
         const { email, password } = credentials as {
           email: string;
           password: string;
         };
 
-
         try {
           const user = await prisma.user.findFirst({
             where: { email },
           });
 
-          if(!user) throw new Error( JSON.stringify({ error:'Invalid Credentials', status: false }));
-
+          if (!user)
+            throw new Error(
+              JSON.stringify({ error: "Invalid Credentials", status: false })
+            );
 
           if (user && user.password && credentials) {
             const isAuth = await bcrypt.compare(password, user.password);
             if (isAuth) {
               return user;
             } else {
-               throw new Error( JSON.stringify({ error:'Invalid Credentials', status: false }));
+              throw new Error(
+                JSON.stringify({ error: "Invalid Credentials", status: false })
+              );
             }
           } else {
-            throw new Error( JSON.stringify({ error:'Invalid Credentials', status: false }));
+            throw new Error(
+              JSON.stringify({ error: "Invalid Credentials", status: false })
+            );
           }
         } catch (err: any) {
-          throw new Error( JSON.stringify({ error:'Invalid Credentials', status: false }));
+          throw new Error(
+            JSON.stringify({ error: "Invalid Credentials", status: false })
+          );
         }
       },
     }),

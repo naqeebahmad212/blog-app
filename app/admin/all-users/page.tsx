@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db/prisma"
 import { getServerSession } from "next-auth"
 import DataGridComp from "@/components/DataGridComp";
 import UserDataGrid from "./UsersDataGrid";
+import { authOptions } from "@/lib/auth";
 
 
 const AllUser = async() => {
@@ -10,6 +11,8 @@ const AllUser = async() => {
     const users= await prisma.user.findMany({
         orderBy:{id:"desc"}
     })
+
+    const session=await getServerSession(authOptions)
 
 
 
@@ -19,7 +22,7 @@ const AllUser = async() => {
 
   return (
     <div className="">
-        <UserDataGrid users={users}/>
+        <UserDataGrid session={session} users={users}/>
     </div>
   )
 }
