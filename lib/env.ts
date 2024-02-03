@@ -7,7 +7,6 @@ const envSchema=zod.object({
     NEXTAUTH_URL:zod.string().nonempty(),
     NEXTAUTH_SECRET:zod.string().nonempty(),
     NEXT_PUBLIC_GOOGLE_ANALYTICS:zod.string().nonempty(),
-    NEXTAUTH_SECRET_JWT:zod.string().nonempty()
 })
 
 export const env = envSchema.parse(process.env)
