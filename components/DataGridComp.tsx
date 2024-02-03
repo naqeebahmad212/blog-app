@@ -5,11 +5,36 @@ import { DataGrid } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import NoteAltIcon from "@mui/icons-material/NoteAlt";
 import { deleteProductHandler } from "@/app/admin/all-posts/action";
+import { Prisma } from "@prisma/client";
+import Image from "next/image";
 
-const DataGridComp = ({ userPosts }: any) => {
+type PostWithAuthorAndCategoy=Prisma.PostGetPayload<{include:{author:true , categories:true}}>
+
+interface UserPostProps{
+    posts:PostWithAuthorAndCategoy[]
+}
+
+const DataGridComp = ({ posts }: UserPostProps) => {
   const [pending, startTransition] = useTransition();
   const columns = [
-    { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
+    { field: "id", headerName: "Post Id", minWidth: 100, flex: 0.5,},
+
+    { field: "image", headerName: "Post Image", minWidth: 100, flex: 0.5,
+    renderCell: (params: any) => {
+      return (
+        <div className="w-[45px] h-[40px] rounded-lg overflow-hidden">
+          <Image
+          alt="d"
+          src={params.row.image}
+          width={100}
+          height={100}
+            className="hover:text-success h-[100%]"
+          />
+        </div>
+      );
+    },
+  
+  },
 
     {
       field: "title",
@@ -25,9 +50,9 @@ const DataGridComp = ({ userPosts }: any) => {
     },
     {
       field: "category",
-      headerName: "Categpry",
+      headerName: "Category",
       type: "text",
-      minWidth: 80,
+      minWidth: 70,
       flex: 0.3,
     },
 
@@ -36,14 +61,14 @@ const DataGridComp = ({ userPosts }: any) => {
       headerName: "Date",
       type: "number",
       minWidth: 170,
-      flex: 0.5,
+      // flex: 0.5,
     },
 
     {
       field: "views",
       headerName: "views",
       type: "number",
-      minWidth: 50,
+      minWidth: 20,
       flex: 0.5,
     },
 
@@ -83,12 +108,13 @@ const DataGridComp = ({ userPosts }: any) => {
 
   const rows: any[] = [];
   // adminProducts &&
-  if (userPosts) {
-    userPosts.forEach((item: any) => {
+  if (posts) {
+    posts.forEach((item: PostWithAuthorAndCategoy) => {
       rows.push({
-        id: item.id,
+        id:item.id,
+        image: item.image,
         title: item.title,
-        date: item.createdAt,
+        date: new Date(item.createdAt).toDateString(),
         category: item.categories.name,
         by: item.author.name,
         views: item.views,
@@ -103,7 +129,7 @@ const DataGridComp = ({ userPosts }: any) => {
           <span className="loading loading-spinner loading-lg"></span>
         )}
       </div> */}
-      <h1 className="text-center my-3">All Blogs</h1>
+      <h1 className="text-center my-3">All My Blogs</h1>
       <DataGrid
         rows={rows}
         columns={columns}

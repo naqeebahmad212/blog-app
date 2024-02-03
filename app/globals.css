@@ -23,6 +23,11 @@
 #postBody h1 {
   font-size: 30px;
 }
+@layer components {
+  .sidebar{
+    transition:all .4s ease-in-out;
+  }
+}
 
 @media screen and (max-width: 1050px) {
   #postBody h1 {
@@ -33,13 +38,13 @@
     font-size: 20px !important;
     font-weight: 600;
   }
-  .productListTable {
+  /* .productListTable {
     border-color: transparent !important;
   }
   .productListTable div{
     border-color: transparent !important;
-    /* z-index: 0; */
-  }
+    z-index: 0; */
+  /* } */
 }
 
 #postBody h2 {

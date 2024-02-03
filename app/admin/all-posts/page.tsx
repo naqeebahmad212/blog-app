@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db/prisma"
 import { getServerSession } from "next-auth"
 import DataGridComp from "@/components/DataGridComp";
 import { authOptions } from "@/lib/auth";
+import AllPostTable from '@/components/AllPostTable'
 
 
 const AllPosts = async() => {
@@ -21,8 +22,8 @@ const AllPosts = async() => {
    
 
   return (
-    <div className=" m-auto">
-        <DataGridComp userPosts={userPosts} />
+    <div className=" ">
+      <DataGridComp posts={userPosts}/>
     </div>
   )
 }

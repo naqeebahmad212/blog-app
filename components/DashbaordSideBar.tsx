@@ -10,7 +10,7 @@ import LogoutBtn from "./LogoutBtn";
 import LogoutIcon from '@mui/icons-material/Logout';
 const DashbaordSideBar = () => {
   return (
-    <div className="bottom-0 sticky">
+    <div className="">
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
@@ -28,7 +28,7 @@ const DashbaordSideBar = () => {
             aria-label="close sidebar"
             className="drawer-overlay bg-black h-[100vh]"
           ></label>
-          <ul className="menu z-10 w-[200px] lg:w-[20%] fixed overflow-hidden bg-black text-white p-4 min-h-[100vh]">
+          <ul className="menu w-[200px] lg:w-[20%] z-[9999999] overflow-hidden bg-black text-white p-4 min-h-[100vh]">
             {/* Sidebar content here */}
             <h3 className="text-white mt-2 text-center p-3 bg-primary text-xl mb-5">
               Admin Panel
