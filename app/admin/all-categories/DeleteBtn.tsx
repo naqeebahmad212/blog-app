@@ -6,10 +6,11 @@ import { useFormStatus } from "react-dom";
 type DeleteBtnProps = {
   children: React.ReactNode;
   className?: string;
-  id:string
+  id:string,
+  btnStatus: boolean,
 } & ComponentProps<"button">;
 
-const DeleteBtn = ({ children, className, id , ...props }: DeleteBtnProps) => {
+const DeleteBtn = ({ children, className, id , btnStatus, ...props }: DeleteBtnProps) => {
     const [isPending  , startTransition]=useTransition()
   return (
     <button
@@ -20,7 +21,7 @@ const DeleteBtn = ({ children, className, id , ...props }: DeleteBtnProps) => {
     }}
       {...props}
       // onClick={()=> setPending(true) }
-      disabled={isPending}
+      disabled={isPending || btnStatus}
       className={`btn btn-primary  ${className}`}
     >
       {isPending && <span className="loading loading-spinner loading-xs" />}

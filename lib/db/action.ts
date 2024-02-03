@@ -3,6 +3,18 @@
 import { HomeProps } from "@/app/(blogPages)/page";
 import { prisma } from "./prisma";
 import { revalidatePath } from "next/cache";
+import { boolean } from "zod";
+import bcrypt from "bcrypt";
+import { redirect } from "next/navigation";
+import { Prisma } from "@prisma/client";
+
+interface DataProps {
+  data: {
+    name: string;
+    email: string;
+    password: string;
+  };
+}
 
 export const getProducts = async (page = "1") => {
   const perPage = 8;
@@ -16,6 +28,34 @@ export const getProducts = async (page = "1") => {
   });
 };
 
+export const registerUser = async (formData: DataProps) => {
+  const salt = await bcrypt.genSalt();
+
+  try {
+    if (formData.data.password.length < 8) {
+      return "Password should be atleast 8 character";
+    }
+    const hashedPassword = await bcrypt.hash(formData.data.password, salt);
+    const user = await prisma.user.create({
+      data: {
+        name: formData.data.name,
+        email: formData.data.email,
+        password: hashedPassword,
+      },
+    });
+    redirect(
+      "/auth/signin?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2Fregister"
+    );
+  } catch (err: any) {
+    if (err instanceof Prisma.PrismaClientKnownRequestError) {
+      // The .code property can be accessed in a type-safe manner
+      if (err.code === "P2002") {
+        return "Email already exists";
+      }
+    }
+  }
+};
+
 export const deleteUserHandler = async (id: string) => {
   await prisma.user.delete({
     where: { id },
@@ -27,6 +67,7 @@ export const deleteUserHandler = async (id: string) => {
 export const userRoleHandler = async (data: FormData) => {
   const role = data.get("userRole")?.toString();
   const userId = data.get("userId")?.toString();
+  if (!role || !userId) return;
 
   await prisma.user.update({
     where: { id: userId },
@@ -51,7 +92,7 @@ export const addNewCategory = async (formaData: FormData) => {
     } else {
       return;
     }
-  }else{
+  } else {
     return;
   }
   revalidatePath("/admin/all-categories");

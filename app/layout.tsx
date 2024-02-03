@@ -5,8 +5,9 @@ import MainNav from "@/components/shared/MainNav";
 import SessionProvider from "./SessionProvider";
 import Footer from "@/components/shared/Footer";
 import { Noto_Serif } from "next/font/google";
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { env } from "@/lib/env";
+import Provider from "./SessionProvider";
 
 const NotoSerif = Noto_Serif({
   weight: "400",
@@ -31,7 +32,7 @@ export default function RootLayout({
           <main className="">{children}</main>
         </SessionProvider>
       </body>
-      <GoogleAnalytics gaId={env.NEXT_PUBLIC_GOOGLE_ANALYTICS}/>
+      <GoogleAnalytics gaId={env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
     </html>
   );
 }

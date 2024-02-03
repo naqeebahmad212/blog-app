@@ -3,7 +3,9 @@
 import { getUser } from "@/app/admin/add-blog/action";
 import Navbar from "@/components/shared/Navbar";
 import { authOptions } from "@/lib/auth";
+import { env } from "@/lib/env";
 import { getServerSession } from "next-auth";
+import { getToken } from "next-auth/jwt";
 
 const MainNav = async () => {
   const session = await getServerSession(authOptions);

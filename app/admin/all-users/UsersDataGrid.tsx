@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, {useState, useTransition } from "react";
+import React, { useState, useTransition } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import NoteAltIcon from "@mui/icons-material/NoteAlt";
@@ -11,12 +11,12 @@ const UserDataGrid = ({ users }: any) => {
   const [pending, startTransition] = useTransition();
   const [userId, setUserId] = useState("");
   const columns = [
-    { field: "id", headerName: "User ID", minWidth: 200, flex: 0.5 },
+    { field: "id", headerName: "User ID", minWidth: 250, flex: 0.5 },
 
     {
       field: "name",
       headerName: "Name",
-      minWidth: 200,
+      minWidth: 180,
       flex: 1,
     },
     {
@@ -31,15 +31,18 @@ const UserDataGrid = ({ users }: any) => {
       type: "text",
       minWidth: 80,
       flex: 0.3,
+      cellClassName: (params :any) => {
+        return params.row.role === "admin" ? "green" : "red";
+      },
     },
 
-    {
-      field: "createdAt",
-      headerName: "Joined On",
-      type: "number",
-      minWidth: 170,
-      flex: 0.5,
-    },
+    // {
+    //   field: "createdAt",
+    //   headerName: "Joined On",
+    //   type: "number",
+    //   minWidth: 170,
+    //   flex: 0.5,
+    // },
 
     {
       field: "actions",
@@ -51,18 +54,6 @@ const UserDataGrid = ({ users }: any) => {
       renderCell: (params: any) => {
         return (
           <>
-            {/* <button
-              className="ml-4 hover:text-warning"
-              disabled={pending}
-              onClick={() =>
-                startTransition(async () => {
-                  deleteUserHandler(params.row.id);
-                })
-              }
-            >
-              <NoteAltIcon />
-            </button> */}
-
             <button
               onClick={() => {
                 setUserId(params.row.id);
@@ -75,6 +66,7 @@ const UserDataGrid = ({ users }: any) => {
                 <NoteAltIcon />
               </label>
             </button>
+
             <button
               className="ml-4 hover:text-warning"
               disabled={pending}
@@ -84,6 +76,7 @@ const UserDataGrid = ({ users }: any) => {
                 })
               }
             >
+
               <DeleteIcon />
             </button>
           </>
@@ -101,18 +94,16 @@ const UserDataGrid = ({ users }: any) => {
         name: item.name,
         email: item.email,
         role: item.role,
-        createAt: item.createdAt,
+        // createAt: item.createdAt,
       });
     });
   }
 
   return (
     <div className="relative">
-      <div className="absolute top-[40%] left-[0%] h-[100vh] w-full">
-        {pending && (
-          <span className="loading loading-spinner loading-lg"></span>
-        )}
-      </div>
+      {pending && (
+        <span className="loading loading-spinner loading-sm absolute left-[42%] top-[45%] "></span>
+      )}
       <h1 className="text-center my-3">All Products</h1>
       <DataGrid
         rows={rows}

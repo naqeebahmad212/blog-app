@@ -1,5 +1,6 @@
 "use client";
 import { Pagination } from "@mui/material";
+import { useSession } from "next-auth/react";
 import { redirect, useRouter } from "next/navigation";
 import { useState } from "react";
 

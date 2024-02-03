@@ -47,7 +47,7 @@ const CategoriesPage = async () => {
                       Visit
                     </Link>
 
-                    <DeleteBtn id={category.id} className="btn btn-warning">
+                    <DeleteBtn btnStatus={category.Post.length > 0 ?  true : false} id={category.id} className="btn btn-warning">
                       Delete
                     </DeleteBtn>
                   </div>

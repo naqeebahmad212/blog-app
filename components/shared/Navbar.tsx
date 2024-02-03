@@ -16,13 +16,13 @@ import AdbIcon from "@mui/icons-material/Adb";
 import Link from "next/link";
 import logo from "@/images/Untitled_design__8_-removebg-preview.png";
 import Image from "next/image";
-import { signIn, signOut } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { Session } from "next-auth";
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 const pages = [
   { label: "Seo", route: "/category/seo" },
   { label: "Web Development", route: "/category/dev" },
@@ -45,6 +45,7 @@ interface NavProps {
 }
 
 function ResponsiveAppBar({ session, userInfo }: NavProps) {
+  
   const [isPending, startTransition] = React.useTransition();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -225,6 +226,15 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
                     >
                       Login
                     </button>
+                  </MenuItem>
+
+
+                  <MenuItem>
+                  <ExitToAppIcon fontSize="small" className="mr-3"/>
+                    <Link href={'/register'}
+                    >
+                      Register
+                    </Link>
                   </MenuItem>
               
                 
