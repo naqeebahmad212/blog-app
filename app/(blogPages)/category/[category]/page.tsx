@@ -13,23 +13,27 @@ interface searchParamsProps {
   };
 }
 
-export const generateMetadata=async({ params: { category } }: searchParamsProps):Promise <Metadata> =>{
-  return{
-    title:`${category.toUpperCase()} BLOGS`,
-    description:`All ${category} related posts are found on the current page`
-  }
-}
+export const generateMetadata = async ({
+  params: { category },
+}: searchParamsProps): Promise<Metadata> => {
+  return {
+    title: `${category.toUpperCase()} BLOGS`,
+    description: `All ${category} related posts are found on the current page`,
+  };
+};
 
 const SeoCategoryPage = async ({ params: { category } }: searchParamsProps) => {
   const seoCategories = await prisma.category.findMany({
-    where: { name: { contains: category , mode:"insensitive" } },
-    include: { Post: { include: { author: true } } },
+    where: { name: { contains: category, mode: "insensitive" } },
+    include: { Post: { include: { author: true, categories: true } } },
     orderBy: { id: "desc" },
   });
 
   return (
     <main className="p-5 bg-white w-[85vw] m-auto">
-    <h1 className="text-2xl font-bold mb-8">{category.toUpperCase()} BLOGS</h1>
+      <h1 className="text-2xl font-bold mb-8">
+        {category.toUpperCase()} BLOGS
+      </h1>
       {seoCategories && (
         <div className="w-[100%]  grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {seoCategories.map((category) =>
@@ -72,7 +76,9 @@ const SeoCategoryPage = async ({ params: { category } }: searchParamsProps) => {
 
       {seoCategories.length < 1 && (
         <div className="h-[100vh] w-full flex items-center justify-center">
-          <h2 className="text-2xl font-bold">No Posts found in the Category!</h2>
+          <h2 className="text-2xl font-bold">
+            No Posts found in the Category!
+          </h2>
         </div>
       )}
     </main>

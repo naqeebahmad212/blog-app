@@ -22,7 +22,7 @@ type PostWithAuthorAndCategoryType = Prisma.PostGetPayload<{
 }>;
 
 export interface PostWithAuthorAndCategoryProps {
-  post: PostWithAuthorAndCategoryType;
+  post: PostWithAuthorAndCategoryType | null;
 }
 
 export default async function Home({
