@@ -1,14 +1,23 @@
+"use client";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
-import HomeIcon from '@mui/icons-material/Home';
-import NoteAddIcon from '@mui/icons-material/NoteAdd';
-import PeopleIcon from '@mui/icons-material/People';
-import DescriptionIcon from '@mui/icons-material/Description';
-import CategoryIcon from '@mui/icons-material/Category';
+import HomeIcon from "@mui/icons-material/Home";
+import NoteAddIcon from "@mui/icons-material/NoteAdd";
+import PeopleIcon from "@mui/icons-material/People";
+import DescriptionIcon from "@mui/icons-material/Description";
+import CategoryIcon from "@mui/icons-material/Category";
 import { signOut } from "next-auth/react";
 import LogoutBtn from "./LogoutBtn";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
+import { headers } from "next/headers";
+import { usePathname } from "next/navigation";
 const DashbaordSideBar = () => {
+  const pathname = usePathname();
+  const heads = headers();
+
+  // const pathname = heads.get("x-invoke-path") || "";
+  console.log(pathname);
+  alert(pathname);
   return (
     <div className="">
       <div className="drawer lg:drawer-open">
@@ -34,34 +43,32 @@ const DashbaordSideBar = () => {
               Admin Panel
             </h3>
             <div className="hover:bg-primary border-b border-gray-200 transition-all duration-500 ease-out  p-3 hover:cursor-pointer flex items-center gap-2 ">
-              <HomeIcon fontSize="small"/>
+              <HomeIcon fontSize="small" />
               <Link href={"/"}>Home</Link>
             </div>
 
-
             <div className="hover:bg-primary border-b border-gray-200 transition-all duration-500 ease-out p-3 hover:cursor-pointer flex items-center gap-2 ">
-              <DescriptionIcon fontSize="small"/>
+              <DescriptionIcon fontSize="small" />
               <Link href={"/admin/all-posts"}>All Posts</Link>
             </div>
 
-
             <div className="hover:bg-primary border-b border-gray-200 transition-all duration-500 ease-out p-3 hover:cursor-pointer flex items-center gap-2">
-              <NoteAddIcon fontSize="small"/>
+              <NoteAddIcon fontSize="small" />
               <Link href={"/admin/add-blog"}>Add Post</Link>
             </div>
 
             <div className="hover:bg-primary border-b border-gray-200  transition-all duration-500 ease-out p-3 hover:cursor-pointer flex items-center gap-2">
-              <PeopleIcon fontSize="small"/>
+              <PeopleIcon fontSize="small" />
               <Link href={"/admin/all-users"}>All Users</Link>
             </div>
 
             <div className="hover:bg-primary border-b border-gray-200 transition-all duration-500 ease-out p-3 hover:cursor-pointer flex items-center gap-2">
-              <CategoryIcon fontSize="small"/>
+              <CategoryIcon fontSize="small" />
               <Link href={"/admin/all-categories"}>Categories</Link>
             </div>
 
             <div className="hover:bg-primary border-b border-gray-200 transition-all duration-500 ease-out p-3 hover:cursor-pointer flex items-center gap-2">
-              <LogoutIcon fontSize="small"/>
+              <LogoutIcon fontSize="small" />
               <LogoutBtn>Logout</LogoutBtn>
             </div>
           </ul>

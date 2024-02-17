@@ -9,11 +9,20 @@ import PostDate from "@/components/PostDate";
 import { revalidatePath } from "next/cache";
 import Views from "@/components/Views";
 import PostCard, { PostsProps } from "@/components/PostCard";
+import { Prisma } from "@prisma/client";
 
 export interface HomeProps {
   searchParams: {
     page: string;
   };
+}
+
+type PostWithAuthorAndCategoryType = Prisma.PostGetPayload<{
+  include: { categories: true; author: true };
+}>;
+
+export interface PostWithAuthorAndCategoryProps {
+  post: PostWithAuthorAndCategoryType;
 }
 
 export default async function Home({
@@ -44,7 +53,7 @@ export default async function Home({
         <div className="flex flex-col lg:flex-row">
           <div className="w-[100%] lg:w-[70%] grid gap-2 grid-cols-1 lg:grid-cols-2">
             {posts.map((post) => (
-              <PostCard post={post} key={post.id}/>
+              <PostCard post={post} key={post.id} />
             ))}
           </div>
           <div className="flex flex-col ml-0 mt-5 lg:ml-5 lg:mt-0 w-[100%] lg:w-[25%] ">

@@ -18,11 +18,11 @@ import logo from "@/images/Untitled_design__8_-removebg-preview.png";
 import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Session } from "next-auth";
-import PostAddIcon from '@mui/icons-material/PostAdd';
-import LogoutIcon from '@mui/icons-material/Logout';
-import LoginIcon from '@mui/icons-material/Login';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import PostAddIcon from "@mui/icons-material/PostAdd";
+import LogoutIcon from "@mui/icons-material/Logout";
+import LoginIcon from "@mui/icons-material/Login";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { useRouter } from "next/navigation";
 const pages = [
   { label: "Seo", route: "/category/seo" },
@@ -46,9 +46,6 @@ interface NavProps {
 }
 
 function ResponsiveAppBar({ session, userInfo }: NavProps) {
-  
-  const router = useRouter()
-  const [isPending, startTransition] = React.useTransition();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -78,23 +75,23 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Image src={logo} alt="Logo" width={30} height={30} />
-         <Link href={'/'}>
-         <Typography
-            variant="h6"
-            noWrap
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            SEOMrush
-          </Typography>
-         </Link>
+          <Link href={"/"}>
+            <Typography
+              variant="h6"
+              noWrap
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              SEOMrush
+            </Typography>
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -200,15 +197,14 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
               {userInfo && userInfo.role === "admin" && (
                 <>
                   <MenuItem onClick={handleCloseUserMenu}>
-                    <DashboardIcon fontSize="small" className="mr-3"/>
+                    <DashboardIcon fontSize="small" className="mr-3" />
                     <Link href={"/admin/dashboard"}>Dashboard</Link>
                   </MenuItem>
-
                 </>
               )}
               {session ? (
                 <MenuItem>
-                <LogoutIcon fontSize="small" className="mr-3"/>
+                  <LogoutIcon fontSize="small" className="mr-3" />
                   <button
                     onClick={() => {
                       signOut({ callbackUrl: "/" });
@@ -220,22 +216,14 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
               ) : (
                 <div>
                   <MenuItem>
-                  <LoginIcon fontSize="small" className="mr-3"/>
-                    <Link href={'/auth/signin'}>
-                    Login
-                    </Link>
+                    <LoginIcon fontSize="small" className="mr-3" />
+                    <Link href={"/auth/signin"}>Login</Link>
                   </MenuItem>
-
 
                   <MenuItem>
-                  <ExitToAppIcon fontSize="small" className="mr-3"/>
-                    <Link href={'/register'}
-                    >
-                      Register
-                    </Link>
+                    <ExitToAppIcon fontSize="small" className="mr-3" />
+                    <Link href={"/register"}>Register</Link>
                   </MenuItem>
-              
-                
                 </div>
               )}
             </Menu>
