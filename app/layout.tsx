@@ -8,7 +8,6 @@ import { Noto_Serif } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { env } from "@/lib/env";
 import Provider from "./SessionProvider";
-
 const NotoSerif = Noto_Serif({
   weight: "400",
   subsets: ["latin"],

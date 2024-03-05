@@ -71,7 +71,7 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky" className="z-[99999]">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Image src={logo} alt="Logo" width={30} height={30} />

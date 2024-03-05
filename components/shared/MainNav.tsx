@@ -16,7 +16,7 @@ const MainNav = async () => {
   }
 
   return (
-    <div>
+    <div className="sticky top-0 z-[99999]">
       <Navbar session={session} userInfo={userInfo} />
     </div>
   );

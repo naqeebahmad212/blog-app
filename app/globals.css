@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .sidebar {
+    transition: all 0.4s ease-in-out;
+  }
+}
+
 .post-title {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -24,8 +30,8 @@
   font-size: 30px;
 }
 @layer components {
-  .sidebar{
-    transition:all .4s ease-in-out;
+  .sidebar {
+    transition: all 0.4s ease-in-out;
   }
 }
 
@@ -61,20 +67,24 @@
   list-style: decimal;
 }
 
-
-.css-1x7skt0 ,.css-hip9hq-MuiPaper-root-MuiAppBar-root{
+header {
   background-color: rgb(9, 31, 49) !important;
+  position: sticky !important;
+  top: 0 !important;
 }
 
-.green{
+.css-1x7skt0,
+.css-hip9hq-MuiPaper-root-MuiAppBar-root {
+  background-color: rgb(9, 31, 49) !important;
+  position: sticky !important;
+  top: 0 !important;
+  /* margin-bottom: 50px; */
+}
+
+.green {
   color: green !important;
 }
 
-.red{
+.red {
   color: red !important;
 }
-
-
-
-
-
