@@ -7,6 +7,7 @@ import { signOut } from "next-auth/react";
 import PeopleIcon from "@mui/icons-material/People";
 import DescriptionIcon from "@mui/icons-material/Description";
 import NoteAddIcon from "@mui/icons-material/NoteAdd";
+import HomeIcon from "@mui/icons-material/Home";
 import { usePathname } from "next/navigation";
 
 const SideTest = () => {
@@ -46,6 +47,20 @@ const SideTest = () => {
                       ></path>
                     </svg>
                     <span className="-mr-1 font-medium">Dashboard</span>
+                  </Link>
+                </li>
+
+                <li className="min-w-max">
+                  <Link
+                    href="/"
+                    aria-label="home"
+                    className="bg group flex items-center space-x-4 rounded-full px-4 py-3 text-gray-600"
+                  >
+                    <HomeIcon
+                      fontSize="small"
+                      className={`fill-current group-hover:text-cyan-300 ${pathname === "/" ? "text-cyan-300" : "text-gray-600"}`}
+                    />
+                    <span className="-mr-1 font-medium">Home</span>
                   </Link>
                 </li>
                 <li className="min-w-max">
