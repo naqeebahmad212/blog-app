@@ -2,7 +2,7 @@ import { PostWithAuthorAndCategoryProps } from "@/app/(blogPages)/page";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 const Views = ({ post }: PostWithAuthorAndCategoryProps) => {
   return (
-    <div className="bg-slate-50 text-[10px] mr-2 text-gray-500 font-semibold flex items-center px-1 lg:px-4 ">
+    <div className="hidden  bg-slate-50 text-[10px] mr-2 text-gray-500 font-semibold sm:flex items-center px-1 lg:px-4 ">
       {" "}
       <VisibilityIcon fontSize="small" color="disabled" />
       {post && post.views && post.views < 1000 && (

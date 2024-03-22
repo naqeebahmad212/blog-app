@@ -37,14 +37,14 @@ const HomeTopSix = async () => {
         ))}
       </div>
 
-      <div className="flex mt-10 flex-col lg:flex-row">
-        <div className="w-[100%] lg:w-[70%] relative mr-2">
+      <div className="flex mt-10 flex-col lg:flex-row gap-4">
+        <div className="w-[100%] lg:w-[70%] relative">
           <button className="btn lg:text-xl btn-success rounded-sm absolute -top-4 left-4 z-[999] ">
             TOP STORIES
           </button>
 
           <div
-            className="h-[220px] lg:h-[400px] m-2 hover:scale-[1.01] transition duration-1000 ease-out bg-cover object-cover bg-top w-[100%] overflow-hidden relative"
+            className="h-[220px] md:h-[300px] lg:h-[400px] hover:scale-[1.01] transition duration-1000 ease-out bg-cover object-cover bg-top w-[100%] overflow-hidden relative"
             style={{ backgroundImage: `url('${topViewedPosts[0].image}')` }}
           >
             <Link
@@ -66,10 +66,10 @@ const HomeTopSix = async () => {
             </Link>
           </div>
         </div>
-        <div className="w-[100%] lg:w-[28%] overflow-hidden flex lg:block">
-          <div className="w-[50%] lg:w-[100%]">
+        <div className="w-[100%] lg:w-[28%] overflow-hidden md:flex lg:block gap-2 ">
+          <div className="w-[100%] ">
             <div
-              className="h-[120px] lg:h-[195px] hover:scale-[1.01] transition duration-1000 ease-out m-2 bg-top bg-cover object-cover w-[100%] overflow-hidden "
+              className="h-[120px] md:h-[160px] lg:h-[195px] hover:scale-[1.01] transition duration-1000 ease-out  bg-top bg-cover object-cover w-[100%] overflow-hidden "
               style={{ backgroundImage: `url('${topViewedPosts[1].image}')` }}
             >
               <Link
@@ -92,9 +92,9 @@ const HomeTopSix = async () => {
               </Link>
             </div>
           </div>
-          <div className="w-[50%] lg:w-[100%]">
+          <div className="w-[100%]">
             <div
-              className="h-[120px] lg:h-[195px] hover:scale-[1.01] transition duration-1000 ease-out bg-top m-2 bg-cover object-cover w-[100%] overflow-hidden"
+              className="h-[120px] md:h-[160px] lg:h-[195px] hover:scale-[1.01] transition duration-1000 ease-out bg-top mt-4 md:mt-0 lg:mt-3 bg-cover object-cover w-[100%] overflow-hidden"
               style={{ backgroundImage: `url('${topViewedPosts[2].image}')` }}
             >
               <Link
