@@ -28,7 +28,7 @@ export const TracingBeam = ({
   return (
     <>
       <div className="fixed top-[20%] left-2 md:left-5 w-1 h-[230px] bg-gray-300 rounded-2xl">
-        {scrollYProgress.get() < 0.1 && (
+        {scrollYProgress.get() == 0 && (
           <span className="absolute -left-[2px] top-0 h-1 w-1 progressBar p-1 rounded-full"></span>
         )}
       </div>
