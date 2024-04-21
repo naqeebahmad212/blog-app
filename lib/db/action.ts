@@ -6,7 +6,7 @@ import { revalidatePath } from "next/cache";
 import { boolean } from "zod";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
-import { Prisma } from "@prisma/client";
+import { Post, Prisma } from "@prisma/client";
 import { sign } from "crypto";
 import { signIn } from "next-auth/react";
 
@@ -105,3 +105,19 @@ export const deleteCategory = async (id: string | undefined) => {
 
   revalidatePath("/admin/all-categories");
 };
+
+
+export const getSearchPost=async(searchTerms:string)=>{
+  const posts = await prisma.post.findMany({
+    where:{
+      OR:[  
+        {title:{contains: searchTerms , mode:'insensitive'}},
+        {body:{contains:searchTerms, mode:'insensitive'}}
+      ]
+    },
+    orderBy:{id:'desc'},
+  })
+
+  return posts
+
+}

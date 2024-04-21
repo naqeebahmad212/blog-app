@@ -24,6 +24,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { useRouter } from "next/navigation";
+import SearchSuggestion from "./SearchSuggestion";
 const pages = [
   { label: "Seo", route: "/category/seo" },
   { label: "Web Development", route: "/category/dev" },
@@ -74,7 +75,13 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
     <AppBar position="sticky" className="z-[99999]">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Image src={logo} alt="Logo" width={30} height={30} />
+          <Image
+            src={logo}
+            alt="Logo"
+            width={30}
+            height={30}
+            className="hidden sm:block sm:mr-2"
+          />
           <Link href={"/"}>
             <Typography
               variant="h6"
@@ -162,6 +169,10 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
               </MenuItem>
             ))}
           </Box>
+
+          <MenuItem>
+            <SearchSuggestion />
+          </MenuItem>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

@@ -10,6 +10,7 @@ import { revalidatePath } from "next/cache";
 import { Metadata } from "next";
 import Views from "@/components/Views";
 import PageDetailsClient from "@/components/PageDetailsClient";
+import { Suspense } from "react";
 
 interface PostdetailsPageProps {
   params: {
@@ -56,8 +57,6 @@ const PostdetailsPage = async ({ params: { id } }: PostdetailsPageProps) => {
   const topViewedPosts = await prisma.post.findMany({
     orderBy: { views: "desc" },
   });
-
-  revalidatePath("/post/[id]");
 
   return (
     <div>

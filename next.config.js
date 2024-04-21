@@ -10,9 +10,7 @@ const nextConfig = {
       { hostname: "res.cloudinary.com" },
     ],
   },
-  api: {
-    responseLimit: false,
-  },
+ 
 };
 
 module.exports = nextConfig;

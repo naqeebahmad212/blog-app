@@ -1,7 +1,7 @@
 "use client";
 import { Post, Prisma } from "@prisma/client";
 import Image from "next/image";
-import React from "react";
+import React, { Suspense } from "react";
 import PostDate from "./PostDate";
 import Views from "./Views";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
@@ -48,6 +48,7 @@ const PageDetailsClient = ({
                   height={100}
                 />
               </div>
+
               <div className="flex text-sm items-center flex-wrap mx-2">
                 <p className="text-gray-600">by</p>
                 <p className="mx-2">{post?.author.name}</p>

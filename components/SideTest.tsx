@@ -76,7 +76,7 @@ const SideTest = () => {
                     >
                       <path
                         className={`fill-current group-hover:text-cyan-300 ${pathname === "/admin/all-categories" ? "text-cyan-300" : "text-gray-600"}`}
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z"
                         clip-rule="evenodd"
                       />
@@ -103,7 +103,7 @@ const SideTest = () => {
                     >
                       <path
                         className={`fill-current group-hover:text-cyan-600 ${pathname === "/admin/all-posts" ? "text-cyan-600" : "text-gray-600"}`}
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
                         clip-rule="evenodd"
                       />
@@ -166,7 +166,7 @@ const SideTest = () => {
                   fill="currentColor"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
                     clip-rule="evenodd"
                   />
