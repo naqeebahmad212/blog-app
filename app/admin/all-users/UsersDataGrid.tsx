@@ -8,15 +8,17 @@ import { deleteProductHandler } from "@/app/admin/all-posts/action";
 import { deleteUserHandler, userRoleHandler } from "@/lib/db/action";
 import { User } from "@prisma/client";
 import { Session } from "next-auth";
+import PostSubmitBtn from "../add-blog/PostSubmitBtn";
 
-interface UserProps{
-  users:User[]
-  session:Session | null
+interface UserProps {
+  users: User[];
+  session: Session | null;
 }
 
-const UserDataGrid = ({ users , session }: UserProps) => {
+const UserDataGrid = ({ users, session }: UserProps) => {
   const [pending, startTransition] = useTransition();
   const [userId, setUserId] = useState("");
+  const [currentUserId, setCurrentUserId] = useState("");
   const columns = [
     { field: "id", headerName: "User ID", minWidth: 250, flex: 0.5 },
 
@@ -38,7 +40,7 @@ const UserDataGrid = ({ users , session }: UserProps) => {
       type: "text",
       minWidth: 80,
       flex: 0.3,
-      cellClassName: (params :any) => {
+      cellClassName: (params: any) => {
         return params.row.role === "admin" ? "green" : "red";
       },
     },
@@ -62,7 +64,7 @@ const UserDataGrid = ({ users , session }: UserProps) => {
         return (
           <>
             <button
-            disabled={ session?.user.email !== "soomrush212@gmail.com" }
+              disabled={session?.user.email !== "soomrush212@gmail.com"}
               onClick={() => {
                 setUserId(params.row.id);
               }}
@@ -77,15 +79,20 @@ const UserDataGrid = ({ users , session }: UserProps) => {
 
             <button
               className="ml-4 hover:text-warning"
-              disabled={pending || session?.user.email !== "soomrush212@gmail.com" } 
-              onClick={() =>
+              disabled={
+                pending || session?.user.email !== "soomrush212@gmail.com"
+              }
+              onClick={() => {
+                setCurrentUserId(params.row.id);
                 startTransition(async () => {
                   deleteUserHandler(params.row.id);
-                })
-              }
+                });
+              }}
             >
-
-              <DeleteIcon />
+              {currentUserId == params.row.id && pending && (
+                <span className="loading loading-spinner loading-sm mt-1"></span>
+              )}
+              {!pending && <DeleteIcon />}
             </button>
           </>
         );
