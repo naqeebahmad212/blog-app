@@ -10,11 +10,11 @@ export type PostsProps = Prisma.PostGetPayload<{
   include: { author: true; categories: true };
 }>;
 
-const PostCard = ({ post }: PostWithAuthorAndCategoryProps) => {
+const PostCard = ({ post, className }: PostWithAuthorAndCategoryProps) => {
   return (
     <Link href={"/post/" + post.id} key={post.id}>
       <div
-        className="h-[180px] md:h-[210px] hover:scale-[1.02] transition duration-1000 ease-out bg-cover object-cover bg-top"
+        className={`${className} h-[180px] md:h-[210px] hover:scale-[1.02] transition duration-1000 ease-out bg-cover object-cover bg-top`}
         style={{ backgroundImage: `url(${post.image})` }}
       >
         <div className="overlay flex relative p-6 w-[100%] transition duration-1000 ease-out h-[100%] hover:bg-black  hover:bg-opacity-30">

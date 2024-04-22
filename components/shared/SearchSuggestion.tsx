@@ -34,30 +34,33 @@ const SearchSuggestion = () => {
         }}
       />
 
-      <div className="searchSuggestion absolute top-[50px] left-0 w-[250px] overflow-hidden z-[999] text-black">
+      <div className="searchSuggestion absolute top-[50px] -left-[10%] w-[250px] overflow-hidden z-[999] rounded-b-xl shadow-lg  text-gray-300">
         <ul>
           {posts &&
             searchQuery != "" &&
             posts.map((post) => (
-              <li key={post.id} className="py-2 border-b  text-sm bg-white p-3">
+              <li
+                key={post.id}
+                className="py-2 border-b  text-sm bg-[#091f31] p-3"
+              >
                 <Link
                   onClick={() => setSearchQuery("")}
                   href={`/post/${post.id}`}
                   className="hover:link hover:text-blue-500"
                 >
-                  {`${post.title.slice(0, 33)}...`}
+                  {`${post.title.slice(0, 33)}..`}
                 </Link>
               </li>
             ))}
 
           {pending && (
-            <li className="w-full flex justify-center bg-white p-3">
-              <span className="loading loading-spinner mx-auto"></span>
+            <li className="w-full flex justify-center bg-[#091f31] p-3">
+              <span className="loading text-gray-300 loading-spinner mx-auto"></span>
             </li>
           )}
 
           {posts.length < 1 && searchQuery != "" && !pending && (
-            <li className="w-full flex justify-center bg-white p-3">
+            <li className="w-full flex justify-center bg-[#091f31] p-3">
               <span className="text-sm">No search matched.</span>
             </li>
           )}
