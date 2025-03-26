@@ -15,7 +15,7 @@ export default function BlogPagesLayout({
   return (
     <main className={`${notoSerif.className}`}>
       <MainNav />
-      <main className="">{children}</main>
+      <main className="min-h-dvh">{children}</main>
       <Footer />
     </main>
   );

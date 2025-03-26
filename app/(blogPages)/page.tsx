@@ -40,7 +40,7 @@ export default async function Home({
     take: perPage,
   });
 
-  revalidatePath("/");
+  // revalidatePath("/");
   return (
     <main className="p-5 bg-white w-[85vw] m-auto">
       <HomeTopSix />
