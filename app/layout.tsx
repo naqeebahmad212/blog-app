@@ -8,6 +8,7 @@ import { Noto_Serif } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { env } from "@/lib/env";
 import Provider from "./SessionProvider";
+import logo from "@/images/Untitled_design__8_-removebg-preview.png";
 const NotoSerif = Noto_Serif({
   weight: "400",
   subsets: ["latin"],
@@ -17,6 +18,25 @@ export const metadata: Metadata = {
   title: "SEOMrush",
   description:
     "This is a Blog App that provides the best guides, tips and teaches you web developent in specific and development in general",
+  icons: {
+    icon: logo.src,
+    shortcut: logo.src,
+    apple: logo.src,
+  },
+  openGraph: {
+    title: "SEOMrush",
+    description:
+      "This is a Blog App that provides the best guides, tips and teaches you web developent in specific and development in general",
+    url: "https://blog-app-f8xx.vercel.app",
+    siteName: "SEOMrush",
+    images: [
+      {
+        url: logo.src,
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
