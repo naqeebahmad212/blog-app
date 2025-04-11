@@ -144,6 +144,7 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
           <Sidebar />
 
           <Typography
+            className="hidden sm:block"
             variant="h5"
             noWrap
             component="a"
