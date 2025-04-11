@@ -27,7 +27,7 @@ const SideTest = () => {
         className="absolute top-6  left-4 z-50 p-2  rounded-md lg:hidden"
       >
         {isOpen ? (
-          <CloseIcon className="absolute -top-[2px] left-0" />
+          <CloseIcon className="absolute top-[9px] left-0" />
         ) : (
           <MenuIcon className="text-white" />
         )}
@@ -35,7 +35,7 @@ const SideTest = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 w-[40%] z-40 h-full bg-gray-100 shadow-lg transform ${
+        className={`fixed top-0 left-0 w-[70%] md:w-[40%] z-40 h-full bg-gray-100 shadow-lg transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 lg:translate-x-0 lg:w-56`}
       >

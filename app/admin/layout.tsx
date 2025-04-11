@@ -28,7 +28,7 @@ export default async function RootLayout({
     <main>
       {/* <MainNav /> */}
       <div className="dashboard  flex">
-        <div className="md:w-[15%]">
+        <div className="w-[50%] md:w-[15%]">
           <SideTest />
         </div>
         <div className="dashboard w-full md:w-[80%] px-3">
