@@ -1,10 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useTransition } from "react";
-import {
-  formHandler,
-  getAllcategories,
-} from "./action";
+import { formHandler, getAllcategories } from "./action";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Image from "next/image";
@@ -33,14 +30,11 @@ interface UserProps {
   image: string | null;
 }
 
-// page metadata 
-
-
+// page metadata
 
 const AddBlogClient = () => {
   const [isPending, startTransition] = useTransition();
   const { pending } = useFormStatus();
-
 
   const modules = {
     toolbar: [
@@ -67,17 +61,16 @@ const AddBlogClient = () => {
   let initArrCate: CategoriesProps[] = [];
   // Array<{ id: number, name: string }>
   const [categoriesDatabase, setCategoriesDatabase] = useState(initArrCate);
-  const [cat , setCat]=useState('')
+  const [cat, setCat] = useState("");
 
   useEffect(() => {
     startTransition(async () => {
       const categories = await getAllcategories();
       setCategoriesDatabase(categories);
     });
-  },[]);
+  }, []);
 
   const imagesHandler = (e: any) => {
-
     if (e.target.files.length > 0) {
       setFiles("");
       setImagePreview("");
@@ -150,14 +143,16 @@ const AddBlogClient = () => {
           ))}
         </select>
 
-        <ReactQuill
-          className="h-[30vh] mb-20"
-          value={body}
-          onChange={(newValue) => setBody(newValue)}
-          modules={modules}
-        />
+        <div className="rounded-md overflow-hidden border h-full">
+          <ReactQuill
+            className="h-[300px] rounded-md "
+            value={body}
+            onChange={(newValue) => setBody(newValue)}
+            modules={modules}
+          />
+        </div>
         <input type="hidden" name="body" value={body} id="" />
-        <PostSubmitBtn>Add Post</PostSubmitBtn>
+        <PostSubmitBtn className="mt-2">Add Post</PostSubmitBtn>
       </form>
     </div>
   );

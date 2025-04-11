@@ -39,7 +39,7 @@ const CategoriesPage = async () => {
                 <td>{category.name}</td>
                 <td>{category.Post.length}</td>
                 <td>
-                  <div className="flex items-center justify-around">
+                  <div className="flex items-center justify-between gap-2">
                     <Link
                       className="link text-blue-700"
                       href={`/category/${category.name.toLowerCase()}`}
@@ -47,7 +47,11 @@ const CategoriesPage = async () => {
                       Visit
                     </Link>
 
-                    <DeleteBtn btnStatus={category.Post.length > 0 ?  true : false} id={category.id} className="btn btn-warning">
+                    <DeleteBtn
+                      btnStatus={category.Post.length > 0 ? true : false}
+                      id={category.id}
+                      className="btn btn-warning"
+                    >
                       Delete
                     </DeleteBtn>
                   </div>
@@ -61,7 +65,7 @@ const CategoriesPage = async () => {
       <div className="createCategory w-full">
         <form action={addNewCategory} className=" m-10">
           <input
-          name="newCategory"
+            name="newCategory"
             type="text"
             placeholder="Add New Category"
             className="input input-bordered w-full"

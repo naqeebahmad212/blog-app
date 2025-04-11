@@ -1,19 +1,16 @@
-
-import { Metadata } from "next"
-import AddBlogClient from "./AddBlogClient"
-
+import { Metadata } from "next";
+import AddBlogClient from "./AddBlogClient";
 
 export const metadata = {
   title: "Add-Blog",
 };
 
-
-const AddBlogPage = async() => {
+const AddBlogPage = async () => {
   return (
-    <div className=" m-auto">
-      <AddBlogClient/>
+    <div className=" ">
+      <AddBlogClient />
     </div>
-  )
-}
+  );
+};
 
-export default AddBlogPage
+export default AddBlogPage;
