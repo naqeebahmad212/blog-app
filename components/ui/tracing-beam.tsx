@@ -27,13 +27,13 @@ export const TracingBeam = ({
   console.log(scrollYProgress);
   return (
     <>
-      <div className="fixed top-[20%] left-2 md:left-5 w-1 h-[50dvh] bg-gray-300 rounded-2xl">
+      <div className="fixed top-[20%] right-2 md:left-5 w-1 h-[50dvh] bg-gray-300 rounded-2xl">
         {scrollYProgress.get() == 0 && (
           <span className="absolute -left-[2px] -top-[4px] h-1 w-1 bg-blue-400 p-1 rounded-full"></span>
         )}
       </div>
       <motion.div
-        className="fixed top-[20%] left-2 md:left-5 w-1 h-[50dvh] progressBar rounded-3xl "
+        className="fixed top-[20%] right-2 md:left-5 w-1 h-[50dvh] progressBar rounded-3xl "
         style={{
           scaleY: scrollYProgress,
           transformOrigin: "top",

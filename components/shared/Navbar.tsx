@@ -178,11 +178,11 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
             <SearchSuggestion />
           </MenuItem>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, marginLeft: 3 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
-                  alt="Remy Sharp"
+                  alt="?"
                   src={user?.image || `/static/images/avatar/2.jpg`}
                 />
               </IconButton>

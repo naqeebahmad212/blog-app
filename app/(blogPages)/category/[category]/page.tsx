@@ -30,7 +30,7 @@ const SeoCategoryPage = async ({ params: { category } }: searchParamsProps) => {
   });
 
   return (
-    <main className="p-5 bg-white w-[85vw] md:max-w-7xl m-auto">
+    <main className=" p-4 bg-white  md:max-w-7xl m-auto">
       <h1 className="text-2xl font-bold mb-8">
         {category.toUpperCase()} BLOGS
       </h1>

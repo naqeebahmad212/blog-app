@@ -115,8 +115,8 @@ const PostdetailsPage = async ({ params: { id } }: PostdetailsPageProps) => {
       )}
 
       {relatedPosts.length > 2 && (
-        <div className="my-7  ">
-          <h2 className="p-2 mb-3 bg-black text-white text-lg md:text-2xl font-bold md:max-w-[65%]">
+        <div className="my-7  max-w-[90%] md:max-w-[100%] mx-auto ">
+          <h2 className="p-2 mb-3 bg-black text-white text-lg md:text-2xl font-bold max-w-[100%] md:max-w-[65%]">
             More related posts
           </h2>
           <SlickCarousel settings={settings} relatedPosts={relatedPosts} />

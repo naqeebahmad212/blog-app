@@ -32,17 +32,17 @@ const SignInPageComp = () => {
     }
   };
   return (
-    <div className="w-full h-screen bg-gray-100 bg-dotted-pattern pt-12 ">
-      <div className="bg-white shadow-md border m-auto border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full h-screen bg-gray-100 bg-dotted-pattern flex items-center justify-center ">
+      <div className="bg-white shadow-md border  border-gray-200 rounded-lg p-2  m-2 w-full sm:p-2 lg:p-8 dark:bg-white ">
         <div className="space-y-6">
           <form onSubmit={handelSubmit}>
-            <h3 className="text-xl font-medium text-gray-900 dark:text-white">
+            <h3 className="text-xl font-medium text-gray-900 dark:text-gray-700 py-2">
               Sign in to our platform
             </h3>
             <div>
               <label
                 htmlFor="email"
-                className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
+                className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-700"
               >
                 Your email
               </label>
@@ -60,7 +60,7 @@ const SignInPageComp = () => {
             <div>
               <label
                 htmlFor="password"
-                className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300"
+                className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-700"
               >
                 Your password
               </label>
@@ -132,7 +132,7 @@ const SignInPageComp = () => {
               Google
             </button>
           </div>
-          <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
+          <div className="text-sm font-medium text-gray-700 dark:text-gray-700">
             Not registered?{" "}
             <Link
               href={"/register"}

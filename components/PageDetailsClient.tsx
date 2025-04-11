@@ -27,7 +27,7 @@ const PageDetailsClient = ({
   topViewedPosts,
 }: PostPageClientProps) => {
   return (
-    <main className="md:p-5 bg-white max-w-[85vw] m-auto">
+    <main className="p-6 bg-white  m-auto">
       <div className="flex flex-col gap-5 mt-10 lg:flex-row">
         <div className="w-[100%] lg:w-[65%]">
           <div className=" flex items-start justify-between">

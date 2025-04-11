@@ -16,29 +16,29 @@ const RegisterForm = () => {
 
   const registerHandler: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    setErr('')
+    setErr("");
     if (password !== confPassowrd) {
       return setErr("Confirm password does not match");
     }
     const data = { name, email, password };
 
     startTransition(async () => {
-     const res= await registerUser({ data: data });
-     setErr(res as string)
+      const res = await registerUser({ data: data });
+      setErr(res as string);
     });
   };
   return (
     <div>
       {" "}
       <div className="bg-gray-100 bg-dotted-pattern py-12 min-h-screen flex items-center justify-center">
-        <div className="bg-white rounded-md shadow-md  lg:w-1/3 md:6/12 w-10/12">
+        <div className="bg-white rounded-md shadow-md  lg:w-1/3 md:6/12 w-full m-2">
           {/* <div className=" bg-blue-700 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full p-4 md:p-8">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="#FFF">
               <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
             </svg>
           </div> */}
-          <div className="p-10 md:p-18 relative">
-          <h2 className="mb-4 text-center text-2xl">Registeration</h2>
+          <div className="p-4 md:p-18 relative">
+            <h2 className="mb-4 text-center text-2xl">Registeration</h2>
 
             <div className="flex items-center text-lg mb-6 md:mb-8">
               <svg className="absolute ml-3" width="20" viewBox="0 0 24 24">
@@ -103,10 +103,10 @@ const RegisterForm = () => {
                 className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 <div className="flex items-center ">
-                <span className="mx-auto">Register</span>
-                {isPending && (
-                  <span className="loading loading-sm loading-spinner ml-2"></span>
-                )}
+                  <span className="mx-auto">Register</span>
+                  {isPending && (
+                    <span className="loading loading-sm loading-spinner ml-2"></span>
+                  )}
                 </div>
               </button>
             </form>
@@ -125,10 +125,10 @@ const RegisterForm = () => {
                 Google
               </button>
             </div>
-            <div className="text-sm mt-3 font-medium text-gray-500 dark:text-gray-300">
+            <div className="text-sm mt-3 font-medium text-gray-700 dark:text-gray-700">
               Already have an account?{" "}
-              <Link 
-              href={'/auth/signin'}
+              <Link
+                href={"/auth/signin"}
                 className="text-blue-700 hover:underline dark:text-blue-500"
               >
                 Login
