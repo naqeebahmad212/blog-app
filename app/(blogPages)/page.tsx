@@ -42,10 +42,10 @@ export default async function Home({
 
   // revalidatePath("/");
   return (
-    <main className="p-5 bg-white w-[85vw] m-auto">
+    <main className="md:p-5 pt-4 bg-white w-[85vw] max-w-7xl mx-auto">
       <HomeTopSix />
 
-      <div className="flex flex-wrap flex-col lg:flex-row m-2">
+      <div className="flex flex-wrap flex-col lg:flex-row ">
         <div className="w-full my-5">
           <p className="w-[100%] lg:w-[70%] bg-black text-xl p-2 text-white">
             Latest Blogs

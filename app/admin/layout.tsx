@@ -28,11 +28,11 @@ export default async function RootLayout({
     <main>
       {/* <MainNav /> */}
       <div className="dashboardContainer flex">
-        <div className="w-[17%]">
+        <div className="md:w-[15%]">
           <SideTest />
         </div>
-        <div className="dashboard w-[84%] px-3">
-          <h1 className="text-2xl  text-center bg-primary text-white p-3 m-auto mt-5">
+        <div className="dashboard md:w-[80%] px-3">
+          <h1 className="text-2xl  text-center bg-gray-800 text-white p-3 m-auto mt-5">
             Admin Dshboard
           </h1>
           {children}

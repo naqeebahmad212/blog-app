@@ -27,7 +27,7 @@ const Dashboard = async () => {
           </div>
         </div>
         <div className="topViewedPosts">
-          <h3 className="text-center text-2xl p-3 bg-primary text-white">
+          <h3 className="text-center text-2xl p-3 bg-gray-800 text-white">
             {" "}
             Top Viewed Posts
           </h3>

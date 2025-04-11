@@ -25,6 +25,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { useRouter } from "next/navigation";
 import SearchSuggestion from "./SearchSuggestion";
+import Sidebar from "./Sidebar";
 const pages = [
   { label: "Seo", route: "/category/seo" },
   { label: "Web Development", route: "/category/dev" },
@@ -100,7 +101,7 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
             </Typography>
           </Link>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          {/* <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -139,7 +140,9 @@ function ResponsiveAppBar({ session, userInfo }: NavProps) {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
+          <Sidebar />
+
           <Typography
             variant="h5"
             noWrap

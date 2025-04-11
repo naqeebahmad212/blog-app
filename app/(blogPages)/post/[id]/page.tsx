@@ -13,6 +13,7 @@ import PageDetailsClient from "@/components/PageDetailsClient";
 import { Suspense } from "react";
 import SlickCarousel from "@/components/SlickCarousel";
 import PostCard from "@/components/PostCard";
+import IncrementViews from "@/components/IncrementViews";
 
 interface PostdetailsPageProps {
   params: {
@@ -43,18 +44,11 @@ export const generateMetadata = async ({
 const PostdetailsPage = async ({ params: { id } }: PostdetailsPageProps) => {
   // page views
 
-  setTimeout(async () => {
-    await prisma.post.update({
-      where: { id },
-      data: { views: { increment: +1 } },
-    });
-  }, 10000);
-
   const post = await prisma.post.findUnique({
     where: { id },
     include: { categories: true, author: true },
   });
-
+  // console.log(post);
   const posts = await prisma.post.findMany({
     orderBy: { id: "desc" },
   });
@@ -95,7 +89,8 @@ const PostdetailsPage = async ({ params: { id } }: PostdetailsPageProps) => {
   };
 
   return (
-    <div>
+    <div className="max-w-7xl mx-auto">
+      <IncrementViews postId={id} />
       {post && (
         <PageDetailsClient
           post={post}
@@ -105,8 +100,8 @@ const PostdetailsPage = async ({ params: { id } }: PostdetailsPageProps) => {
       )}
 
       {relatedPosts.length > 2 && (
-        <div className="my-7 w-[80%] mx-auto">
-          <h2 className="p-3 m-3 bg-black text-white text-lg md:text-2xl font-bold">
+        <div className="my-7  ">
+          <h2 className="p-2 mb-3 bg-black text-white text-lg md:text-2xl font-bold md:max-w-[65%]">
             More related posts
           </h2>
           <SlickCarousel settings={settings} relatedPosts={relatedPosts} />

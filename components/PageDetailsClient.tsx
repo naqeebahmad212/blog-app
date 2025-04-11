@@ -27,7 +27,7 @@ const PageDetailsClient = ({
   topViewedPosts,
 }: PostPageClientProps) => {
   return (
-    <main className="p-5 bg-white w-[85vw] m-auto">
+    <main className="md:p-5 bg-white max-w-[85vw] m-auto">
       <div className="flex flex-col gap-5 mt-10 lg:flex-row">
         <div className="w-[100%] lg:w-[65%]">
           <div className=" flex items-start justify-between">
@@ -71,12 +71,13 @@ const PageDetailsClient = ({
                   }
                   alt="Post Image"
                   width={800}
-                  height={500}
+                  height={400}
+                  className="w-full md:h-[400px] object-cover"
                 />
               </div>
 
               <div className="flex items-center justify-between">
-                <h3 className="text-2xl font-bold text-primary">
+                <h3 className="text-lg md:text-2xl font-bold text-primary">
                   Sharing is Caring
                 </h3>{" "}
                 <div className="flex items-center">
@@ -122,8 +123,8 @@ const PageDetailsClient = ({
               }
               alt="ads"
               width={500}
-              height={400}
-              className="mb-4"
+              height={300}
+              className="mb-4 max-h-[200px] object-cover"
             />
 
             <Image
@@ -133,9 +134,11 @@ const PageDetailsClient = ({
               alt="ads"
               width={500}
               height={400}
+              className="max-h-[200px] object-cover"
             />
           </div>
 
+          {/* recent posts */}
           <div className="latest-post mt-7">
             <p className="w-full text-xl font-bold bg-black text-white p-2">
               {" "}
@@ -156,6 +159,7 @@ const PageDetailsClient = ({
             </ul>
           </div>
 
+          {/* trending now posts */}
           <div className="latest-post mt-7">
             <p className="w-full text-xl font-bold bg-black text-white p-2">
               {" "}

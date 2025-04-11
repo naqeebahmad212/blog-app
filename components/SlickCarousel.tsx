@@ -18,7 +18,7 @@ const SlickCarousel = ({ settings, relatedPosts }: SlickCarouselProps) => {
     <Slider {...settings} className="  ">
       {relatedPosts.length > 2 &&
         relatedPosts.map((post) => (
-          <PostCard className="mx-3" post={post} key={post.id} />
+          <PostCard className="mr-3" post={post} key={post.id} />
         ))}
     </Slider>
   );

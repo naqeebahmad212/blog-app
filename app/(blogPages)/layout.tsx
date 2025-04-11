@@ -13,7 +13,7 @@ export default function BlogPagesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className={`${notoSerif.className}`}>
+    <main className={`${notoSerif.className} `}>
       <MainNav />
       <main className="min-h-dvh">{children}</main>
       <Footer />
