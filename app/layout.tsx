@@ -19,9 +19,11 @@ export const metadata: Metadata = {
   description:
     "This is a Blog App that provides the best guides, tips and teaches you web developent in specific and development in general",
   icons: {
-    icon: logo.src,
-    shortcut: logo.src,
-    apple: logo.src,
+    icon: "https://res.cloudinary.com/dw7nnruzm/image/upload/v1744377170/blog/s6jiewujcn0gtcsnbzzy.png",
+    shortcut:
+      "https://res.cloudinary.com/dw7nnruzm/image/upload/v1744377170/blog/s6jiewujcn0gtcsnbzzy.png",
+    apple:
+      "https://res.cloudinary.com/dw7nnruzm/image/upload/v1744377170/blog/s6jiewujcn0gtcsnbzzy.png",
   },
   openGraph: {
     title: "SEOMrush",
@@ -31,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "SEOMrush",
     images: [
       {
-        url: logo.src,
+        url: "https://res.cloudinary.com/dw7nnruzm/image/upload/v1744377170/blog/s6jiewujcn0gtcsnbzzy.png",
         width: 800,
         height: 600,
       },
