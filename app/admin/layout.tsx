@@ -32,7 +32,7 @@ export default async function RootLayout({
           <SideTest />
         </div>
         <div className="dashboard w-full md:w-[80%] px-3">
-          <h1 className="text-2xl  text-center bg-gray-800 text-white p-3 m-auto mt-5 sticky top-2 z-10 ">
+          <h1 className="text-2xl  text-center bg-gray-800 text-white p-3 m-auto mt-4 sticky top-4 z-10 ">
             Admin Dshboard
           </h1>
           {children}

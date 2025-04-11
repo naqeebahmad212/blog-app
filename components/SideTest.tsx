@@ -44,7 +44,10 @@ const SideTest = () => {
             <div className="text-center py-4">
               <h2 className="text-sm lg:text-xl">SEOMrush</h2>
             </div>
-            <ul className="mt-6 space-y-2 tracking-wide">
+            <ul
+              className="mt-6 space-y-2 tracking-wide"
+              onClick={toggleSidebar}
+            >
               <li className="min-w-max">
                 <Link
                   href="/admin/dashboard"
