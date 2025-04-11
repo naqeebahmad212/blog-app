@@ -62,8 +62,8 @@ const CategoriesPage = async () => {
         </table>
       </div>
 
-      <div className="createCategory w-full">
-        <form action={addNewCategory} className=" m-10">
+      <div className="createCategory w-full mt-5 p-2">
+        <form action={addNewCategory} className="">
           <input
             name="newCategory"
             type="text"
