@@ -27,14 +27,20 @@ const PageDetailsClient = ({
   topViewedPosts,
 }: PostPageClientProps) => {
   return (
-    <main className="p-6 bg-white  m-auto">
-      <div className="flex flex-col gap-5 mt-10 lg:flex-row">
+    <main className="p-5 bg-white  m-auto">
+      <div className="flex flex-col gap-5  lg:flex-row">
         <div className="w-[100%] lg:w-[65%]">
-          <div className=" flex items-start justify-between">
-            <h1 className="text-xl mb-5 mr-5 font-bold lg:text-2xl">
+          <div
+            className={`  flex ${post?.categories.name?.length > 10 && "flex-col md:flex-row"} items-start justify-between`}
+          >
+            <h1
+              className={`text-xl ${post?.categories.name?.length > 10 ? "mb-2 md:mb-5 mr-2" : "mb-5 mr-5"}  font-bold lg:text-2xl`}
+            >
               {post?.title}
             </h1>
-            <p className=" -[10%] text-center rounded-sm text-[15px]  bg-slate-200 mt-1 px-1 text-nowrap py-0">
+            <p
+              className={` text-center rounded-sm text-[15px] ${post.categories.name?.length > 10 && "mb-5"} bg-slate-200 mt-1 px-1 text-nowrap py-0`}
+            >
               {post?.categories.name}
             </p>
           </div>
