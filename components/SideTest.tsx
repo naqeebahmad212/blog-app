@@ -24,7 +24,7 @@ const SideTest = () => {
       {/* Hamburger Menu for Mobile */}
       <button
         onClick={toggleSidebar}
-        className="absolute top-6  left-4 z-50 p-2  rounded-md lg:hidden"
+        className="fixed top-6  left-4 z-50 p-2  rounded-md lg:hidden"
       >
         {isOpen ? (
           <CloseIcon className="absolute top-[9px] left-0" />
