@@ -14,7 +14,7 @@ import { Suspense } from "react";
 import SlickCarousel from "@/components/SlickCarousel";
 import PostCard from "@/components/PostCard";
 import IncrementViews from "@/components/IncrementViews";
-
+import { ObjectId } from "bson";
 interface PostdetailsPageProps {
   params: {
     id: string;
@@ -24,8 +24,16 @@ interface PostdetailsPageProps {
 export const generateMetadata = async ({
   params: { id },
 }: PostdetailsPageProps): Promise<Metadata> => {
-  const post = await prisma.post.findUnique({
-    where: { id },
+  const isValidObjectId = ObjectId.isValid(id);
+
+  const post = await prisma.post.findFirst({
+    where: {
+      OR: [
+        { slug: id }, // Match by slug
+        ...(isValidObjectId ? [{ id: id }] : []), // Match by ObjectId if valid
+      ],
+    },
+    include: { categories: true, author: true },
   });
   if (post) {
     return {
@@ -43,9 +51,16 @@ export const generateMetadata = async ({
 
 const PostdetailsPage = async ({ params: { id } }: PostdetailsPageProps) => {
   // page views
+  // Check if the `id` is a valid ObjectId
+  const isValidObjectId = ObjectId.isValid(id);
 
-  const post = await prisma.post.findUnique({
-    where: { id },
+  const post = await prisma.post.findFirst({
+    where: {
+      OR: [
+        { slug: id }, // Match by slug
+        ...(isValidObjectId ? [{ id: id }] : []), // Match by ObjectId if valid
+      ],
+    },
     include: { categories: true, author: true },
   });
   // console.log(post);

@@ -39,7 +39,7 @@ const HomeTopSix = async () => {
 
       <div className="flex mt-10 flex-col lg:flex-row gap-4">
         <div className="w-[100%] lg:w-[70%] relative">
-          <button className="btn lg:text-xl btn-success rounded-sm absolute -top-4 left-4 z-[999] ">
+          <button className="btn lg:text-xl btn-success rounded-sm absolute -top-4 left-4 z-[99] ">
             TOP STORIES
           </button>
 

@@ -24,7 +24,7 @@ const SideTest = () => {
       {/* Hamburger Menu for Mobile */}
       <button
         onClick={toggleSidebar}
-        className="fixed top-6  left-4 z-50 p-2  rounded-md lg:hidden"
+        className="absolute top-6  left-4 z-50 p-2  rounded-md lg:hidden"
       >
         {isOpen ? (
           <CloseIcon className="absolute -top-[2px] left-0" />
@@ -49,7 +49,7 @@ const SideTest = () => {
                 <Link
                   href="/admin/dashboard"
                   aria-label="dashboard"
-                  className="relative flex items-center space-x-4 bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white"
+                  className="relative flex items-center rounded-r-lg space-x-4 bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white"
                 >
                   <svg
                     className="-ml-1 h-6 w-6"
@@ -77,7 +77,7 @@ const SideTest = () => {
                 <Link
                   href="/"
                   aria-label="home"
-                  className="group flex items-center space-x-4 rounded-full px-4 py-3 text-gray-600"
+                  className="group flex items-center space-x-4 rounded-full px-4 py-3 text-gray-600 rounded-r-lg"
                 >
                   <HomeIcon
                     fontSize="small"
@@ -91,7 +91,7 @@ const SideTest = () => {
               <li className="min-w-max">
                 <Link
                   href="/admin/all-categories"
-                  className="bg group flex items-center space-x-4 rounded-full px-4 py-3 text-gray-600"
+                  className="bg group flex items-center space-x-4 rounded-full px-4 py-3 text-gray-600 rounded-r-lg"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +118,7 @@ const SideTest = () => {
               <li className="min-w-max">
                 <Link
                   href="/admin/all-posts"
-                  className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600"
+                  className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 rounded-r-lg"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +143,7 @@ const SideTest = () => {
               <li className="min-w-max">
                 <Link
                   href="/admin/all-users"
-                  className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600"
+                  className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 rounded-r-lg"
                 >
                   <PeopleIcon
                     fontSize="small"
@@ -155,7 +155,7 @@ const SideTest = () => {
               <li className="min-w-max">
                 <Link
                   href="/admin/add-blog"
-                  className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600"
+                  className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600 rounded-r-lg"
                 >
                   <NoteAddIcon
                     className={`h-5 w-5 group-hover:text-cyan-300 ${pathname === "/admin/add-blog" ? "text-cyan-300" : "text-gray-600"}`}

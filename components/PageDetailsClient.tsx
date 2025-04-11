@@ -34,7 +34,7 @@ const PageDetailsClient = ({
             <h1 className="text-xl mb-5 mr-5 font-bold lg:text-2xl">
               {post?.title}
             </h1>
-            <p className=" w-[10%] text-center rounded-sm text-[15px]  bg-slate-200 mt-1 py-0">
+            <p className=" -[10%] text-center rounded-sm text-[15px]  bg-slate-200 mt-1 px-1 text-nowrap py-0">
               {post?.categories.name}
             </p>
           </div>

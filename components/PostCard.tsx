@@ -11,8 +11,9 @@ export type PostsProps = Prisma.PostGetPayload<{
 }>;
 
 const PostCard = ({ post, className }: PostWithAuthorAndCategoryProps) => {
+  const id = post.slug ? post.slug : post.id;
   return (
-    <Link href={"/post/" + post.id} key={post.id}>
+    <Link href={"/post/" + id} key={post.id}>
       <div
         className={`${className} h-[180px] md:h-[210px] hover:scale-[1.02] transition duration-1000 ease-out bg-cover object-cover bg-top`}
         style={{ backgroundImage: `url(${post.image})` }}

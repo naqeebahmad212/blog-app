@@ -7,6 +7,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { File } from "buffer";
 import { authOptions } from "@/lib/auth";
+import { generateUniqueSlug } from "@/utils";
 
 export async function formHandler(formaData: FormData) {
   const title = formaData.get("title")?.toString();
@@ -36,6 +37,8 @@ export async function formHandler(formaData: FormData) {
     });
   }
 
+  const slug = await generateUniqueSlug(prisma.post, title);
+
   const newPost = await prisma.post.create({
     data: {
       title,
@@ -45,6 +48,7 @@ export async function formHandler(formaData: FormData) {
       public_id: result.public_id,
       authorId: session.user.id,
       categoryId: postCategory.id,
+      slug,
     },
   });
 
@@ -56,8 +60,6 @@ export async function formHandler(formaData: FormData) {
 export const getAllcategories = async () => {
   return await prisma.category.findMany();
 };
-
-
 
 export const getUser = async (id: string) => {
   return await prisma.user.findUnique({ where: { id } });
