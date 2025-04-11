@@ -33,7 +33,7 @@ const SignInPageComp = () => {
   };
   return (
     <div className="w-full h-screen bg-gray-100 bg-dotted-pattern flex items-center justify-center ">
-      <div className="bg-white shadow-md border  border-gray-200 rounded-lg p-2  m-2 w-full sm:p-2 lg:p-8 dark:bg-white ">
+      <div className="bg-white shadow-md border  border-gray-200 rounded-lg p-2  m-2 w-full max-w-[420px] sm:p-2 lg:p-5 dark:bg-white ">
         <div className="space-y-6">
           <form onSubmit={handelSubmit}>
             <h3 className="text-xl font-medium text-gray-900 dark:text-gray-700 py-2">
